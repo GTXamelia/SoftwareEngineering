@@ -3,9 +3,16 @@ class HangpersonGame
   attr_accessor :word
   attr_accessor :guesses
   attr_accessor :wrong_guesses
+  attr_accessor :word_with_guesses 
+  attr_accessor :check_win_or_lose
   
   def initialize(word)
     @word = word
+    @guesses = ''
+    @wrong_guesses = ''
+    @word_with_guesses = ''
+    @word_with_guesses = '-'
+    @check_win_or_lose = ''
   end
 
   def self.get_random_word

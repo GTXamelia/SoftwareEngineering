@@ -29,7 +29,7 @@ class HangpersonApp < Sinatra::Base
     @game = HangpersonGame.new(word)
     redirect '/show'
   end
-  
+
 
   post '/guess' do
     letter = params[:guess].to_s[0]
