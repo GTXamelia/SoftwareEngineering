@@ -26,4 +26,13 @@ class HangpersonGame
     }
   end
 
+  def guess(letter)
+    letter.downcase!
+    if word.include? letter
+
+    else
+      
+    end
+  end
+
 end
