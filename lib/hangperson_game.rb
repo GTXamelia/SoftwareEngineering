@@ -41,6 +41,11 @@ class HangpersonGame
       end
     else
       unless wrong_guesses.include? letter
+        wrong_guesses << letter
+        if wrong_guesses.size >= 7
+          @check_win_or_lose = :lose
+        end
+        return true
       end
     end
     return false
