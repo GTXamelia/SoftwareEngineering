@@ -40,8 +40,10 @@ class HangpersonGame
         return true
       end
     else
-
+      unless wrong_guesses.include? letter
+      end
     end
+    return false
   end
 
 end
