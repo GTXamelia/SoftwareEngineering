@@ -29,13 +29,16 @@ class HangpersonGame
   def guess(letter)
     letter.downcase!
     if word.include? letter
-      guesses << letter
-      for i in 0..word.length
-        if word[i] == letter
-          word_with_guesses[i] = letter
-          @check_win_or_lose = :win if !word_with_guesses.include? '-'
+      unless guesses.include? letter
+        guesses << letter
+        for i in 0..word.length
+          if word[i] == letter
+            word_with_guesses[i] = letter
+            @check_win_or_lose = :win if !word_with_guesses.include? '-'
+          end
         end
         return true
+      end
     else
 
     end
