@@ -11,8 +11,10 @@ class HangpersonGame
     @guesses = ''
     @wrong_guesses = ''
     @word_with_guesses = ''
-    @word_with_guesses = '-'
-    @check_win_or_lose = ''
+    word.each_char do |i|
+      @word_with_guesses << '-'
+    end
+    @check_win_or_lose = :play
   end
 
   def self.get_random_word
