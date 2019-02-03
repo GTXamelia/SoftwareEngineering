@@ -25,7 +25,6 @@ class HangpersonApp < Sinatra::Base
   
   post '/create' do
     word = params[:word] || HangpersonGame.get_random_word
-
     @game = HangpersonGame.new(word)
     redirect '/show'
   end
@@ -56,11 +55,23 @@ class HangpersonApp < Sinatra::Base
   end
   
   get '/win' do
+    if @game.check_win_or_lose == :lose
+      redirect '/lose'
+    end
+    if @game.check_win_or_lose == :play
+      redirect '/show'
+    end
     erb :win
   end
   
   get '/lose' do
-    erb :lose
+    if @game.check_win_or_lose == :win
+      redirect '/win'
+    end
+    if @game.check_win_or_lose == :play
+      redirect '/show'
+    end
+    erb :lose 
   end
   
 end
