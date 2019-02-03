@@ -33,6 +33,13 @@ class HangpersonApp < Sinatra::Base
 
   post '/guess' do
     letter = params[:guess].to_s[0]
+    begin
+      if !@game.guess(letter)
+         flash[:message] = "Letter used already, try again."
+      end
+    rescue ArgumentError => _
+      flash[:message] = "Invalid character, only use a-z!"
+    end
     redirect '/show'
   end
   
