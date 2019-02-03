@@ -44,6 +44,14 @@ class HangpersonApp < Sinatra::Base
   end
   
   get '/show' do
+    redirect '/' if @game.word.nil? || @game.word.empty?
+    
+    case @game.check_win_or_lose
+    when :win
+      redirect '/win'
+    when :lose
+      redirect '/lose'
+    end
     erb :show
   end
   
